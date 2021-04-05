@@ -101,8 +101,11 @@ class Game{
                  
                   if (player.index !== null) {
                      //fill code here, to destroy the objects.
-                     player1.remove(fruits);
-                     player2.remove(fruits);
+                     if(fruitGroup.isTouching(players[player.index - 1])){
+                         fruit.visibility=0;
+                        player1.remove(fruitGroup);
+                         player2.remove(fruitGroup);
+                     }
                   }
                 
 
