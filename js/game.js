@@ -66,8 +66,8 @@ class Game{
                      
                  
                  }
-                
-                
+                fill("yellow");
+                text("score : " + player.score, 200, 200);
                  
 
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
@@ -102,10 +102,16 @@ class Game{
                   if (player.index !== null) {
                      //fill code here, to destroy the objects.
                      if(fruitGroup.isTouching(players[player.index - 1])){
-                         fruit.visibility=0;
-                        player1.remove(fruitGroup);
-                         player2.remove(fruitGroup);
+                       for(var i = 0; i < fruitGroup.length; i++) {
+                           var fruit = fruitGroup.get(i);
+                           if(fruit.isTouching(players[player.index - 1])){
+                               fruit.destroy();
+                               player.score=player.score+1;
+                                player.update();
+                           }
+                       }
                      }
+                     
                   }
                 
 
@@ -122,7 +128,7 @@ class Game{
         fill("black");
         textSize(100);
         text("Game Over! Your Rank:" + player.rank, windowWidth/2 - 275, -windowHeight * 4);
-        endMsgWrite = false;
+        endMsgWrite = true;
     } 
     }
 }

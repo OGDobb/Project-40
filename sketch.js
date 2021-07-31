@@ -50,4 +50,6 @@ function draw() {
     
      game.end();
    }
+
+   
 }
